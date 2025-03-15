@@ -18,7 +18,7 @@ class ProductFactory extends Factory
     {
         return [
             'name' => fake()->word(),
-            'price' => fake()->randomFloat(2, 0.01),
+            'price' => fake()->randomFloat(2, 0.01, 9999999.99),
             'description' => fake()->sentence(),
             'item_number' => fake()->randomNumber(5, true),
             'image' => 'https://picsum.photos/seed/' . fake()->randomNumber(5, true) . '/300/200',
