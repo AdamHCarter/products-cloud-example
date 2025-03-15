@@ -6,20 +6,22 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductValidator {
   public static function validate($data, $verb) {
-    $idRule = 'integer';
-    $nameRule = 'required|min:3|max:255';
-    $priceRule = 'required|decimal:0,2|min:0';
-    $descriptionRule = 'required';
-    $itemNumberRule = 'required|numeric|integer';
-    $imageRule = 'required|url';
+    
 
     if($verb === 'put') {
-      $idRule = 'required|integer';
+      $idRule = 'required';
       $nameRule = 'min:3|max:255';
       $priceRule = 'decimal:0,2|min:0';
       $descriptionRule = '';
       $itemNumberRule = 'numeric|integer';
       $imageRule = 'url';
+    } else {
+      //$idRule = 'integer';
+      $nameRule = 'required|min:3|max:255';
+      $priceRule = 'required|decimal:0,2|min:0';
+      $descriptionRule = 'required';
+      $itemNumberRule = 'required|numeric|integer';
+      $imageRule = 'required|url';
     }
 
     return Validator::make($data, [
