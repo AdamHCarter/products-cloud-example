@@ -34,7 +34,7 @@ class AdminProductController extends Controller
     {
         // if valid, create a product
         $data = $request->all();
-        $validatedData = ProductValidator::validate($data);
+        $validatedData = ProductValidator::validate($data, 'post');
         Product::create($validatedData);
 
         return redirect()->route('admin.products.index')->with('success', 'Product created successfully!');
@@ -64,7 +64,7 @@ class AdminProductController extends Controller
         // Product lookup, validate, update, redirect
         $product = Product::find($id);
         $data = $request->all();
-        $validatedData = ProductValidator::validate($data);
+        $validatedData = ProductValidator::validate($data, ''); //Did not set verb to put, since id is handled already
         $product->update($validatedData);
 
         return redirect()->route('admin.products.index')->with('success', 'Product updated successfully!');
